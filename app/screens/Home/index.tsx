@@ -2,7 +2,7 @@ import React, {FC, useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ButtonIcon} from '../../components/ButtonIcon';
 import {useLogout} from '../../hooks/useLogout';
-import {useFetchUserData} from '../../hooks/useFetchUserData';
+import {useFetchConnectedUserData} from '../../hooks/useFetchConnectedUserData';
 import {Text} from '@ui-kitten/components';
 import {Spacer} from '../../components/Spacer';
 
@@ -12,7 +12,7 @@ import {PostsList} from './components/postsList';
 export const Home: FC = () => {
   const {isLoading, logout} = useLogout();
 
-  const {getUserData, userData} = useFetchUserData();
+  const {getUserData, userData} = useFetchConnectedUserData();
 
   useEffect(() => {
     !userData && getUserData();

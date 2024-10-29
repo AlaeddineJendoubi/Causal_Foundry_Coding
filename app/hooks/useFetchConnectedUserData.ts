@@ -2,7 +2,7 @@ import {useQuery} from 'react-query';
 import AuthService from '../services/auth';
 import {User} from '../api/types';
 
-export const useFetchUserData = () => {
+export const useFetchConnectedUserData = () => {
   const {refetch, isFetching, data} = useQuery(
     ['fetchUserData'],
     AuthService.fetchUserDataService,
