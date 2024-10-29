@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {useAuthUser} from '../../../hooks/useAuthUser';
 import {useNavigation} from '@react-navigation/native';
+import {setNewAction} from '../../../services/tracking';
 
 export const useHandleForm = () => {
   const [userName, setUserName] = useState<string>('');
@@ -24,6 +25,7 @@ export const useHandleForm = () => {
     if (isFormValid) {
       try {
         await refetch();
+        setNewAction('login');
         reset({
           index: 0,
           routes: [{name: 'Home' as never}], // Navigate to Home screen and reset the stack

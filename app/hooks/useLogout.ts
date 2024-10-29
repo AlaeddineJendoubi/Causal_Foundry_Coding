@@ -1,6 +1,7 @@
 import {useQuery} from 'react-query';
 import AuthService from '../services/auth';
 import {useNavigation} from '@react-navigation/native';
+import {getActions, setNewAction} from '../services/tracking';
 
 export const useLogout = () => {
   const {reset} = useNavigation();
@@ -10,6 +11,7 @@ export const useLogout = () => {
     {
       enabled: false,
       onSuccess: () => {
+        setNewAction('logout');
         reset({
           index: 0,
           routes: [{name: 'Login' as never}],

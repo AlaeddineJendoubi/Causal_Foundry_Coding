@@ -8,10 +8,12 @@ interface MainContainerProps {
 export const MainContainer: FC<MainContainerProps> = ({children}) => {
   return (
     <View style={styles?.containerStyle}>
-      {children}
-      <Text style={styles?.textStyle} appearance="hint" category="c2">
-        DEVELOPED BY ALAEDDINE JENDOUBI @2024
-      </Text>
+      <>
+        {children}
+        <Text style={styles?.textStyle} appearance="hint" category="c2">
+          DEVELOPED BY ALAEDDINE JENDOUBI @2024
+        </Text>
+      </>
     </View>
   );
 };

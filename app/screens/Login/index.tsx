@@ -5,6 +5,7 @@ import {InputField} from '../../components/InputField';
 import {Spacer} from '../../components/Spacer';
 import {useHandleForm} from './hooks/useHandleForm';
 import {ButtonIcon} from '../../components/ButtonIcon';
+import {setNewAction} from '../../services/tracking';
 
 export const Login: FC = () => {
   const {
@@ -21,6 +22,10 @@ export const Login: FC = () => {
     handleUserName(dummyData?.username);
     handleUserPassword(dummyData?.password);
   });
+
+  useEffect(() => {
+    setNewAction('login_screen');
+  }, []);
   return (
     <View style={styles?.mainContainerStyle}>
       <Icon style={styles?.icon} fill="#8F9BB3" name="person-outline" />

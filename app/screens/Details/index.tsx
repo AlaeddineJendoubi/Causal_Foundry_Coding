@@ -1,15 +1,18 @@
 import {Text} from '@ui-kitten/components';
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import PostItem from '../../components/PostItem';
 import {Spacer} from '../../components/Spacer';
 import {ScrollView, StyleSheet} from 'react-native';
 
 import {UserDetailsCard} from './components/userDetailsCard';
 import {Post} from '../../api/types';
+import {setNewAction} from '../../services/tracking';
 
 export const Details: FC = ({route}) => {
   const post = route?.params?.post as Post;
-
+  useEffect(() => {
+    setNewAction('post-detail-screen');
+  }, []);
   return (
     <ScrollView>
       <Spacer size={10} />
