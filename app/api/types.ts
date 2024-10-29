@@ -125,3 +125,8 @@ export type PostsDataResponse = {
     limit: number;
   };
 };
+
+export type UserNameResponse = {
+  firstName: string;
+  lastName: string;
+};

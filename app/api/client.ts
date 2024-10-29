@@ -1,6 +1,7 @@
 import axios from 'axios';
 import auth from './auth';
 import posts from './posts';
+import users from './users';
 import {TokenType} from './types';
 
 export const BASE_MOCK_API_URL = 'https://dummyjson.com';
@@ -82,4 +83,5 @@ httpClient.interceptors.response.use(
 export const Api = {
   auth,
   posts,
+  users,
 };
