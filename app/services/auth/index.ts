@@ -1,5 +1,5 @@
 import {Api, removeAuthorizationTokens} from '../../api/client';
-import {SignInDataType} from '../../api/types';
+import {SignInDataType, User} from '../../api/types';
 import StorageService from '../storage';
 
 class AuthService {
@@ -47,6 +47,11 @@ class AuthService {
   signOutUserService = async () => {
     await StorageService.resetStorage();
     removeAuthorizationTokens();
+  };
+
+  fetchUserDataService = async () => {
+    const responseData = await Api?.auth?.fetchUserData();
+    return responseData?.data as User;
   };
 }
 
