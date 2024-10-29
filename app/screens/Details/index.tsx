@@ -1,12 +1,35 @@
 import {Text} from '@ui-kitten/components';
 import React, {FC} from 'react';
+import PostItem from '../../components/PostItem';
+import {Spacer} from '../../components/Spacer';
+import {ScrollView, StyleSheet} from 'react-native';
 
-export const Details: FC = () => {
+import {UserDetailsCard} from './components/userDetailsCard';
+import {Post} from '../../api/types';
+
+export const Details: FC = ({route}) => {
+  const post = route?.params?.post as Post;
+
   return (
-    <>
-      <Text style={{alignSelf: 'center'}} category="h2">
-        This is Details
+    <ScrollView>
+      <Spacer size={10} />
+      <Text style={styles?.titleStyle} category="h4">
+        Post details
       </Text>
-    </>
+      <Spacer line size={10} />
+      <PostItem post={post} />
+      <Spacer size={10} />
+      <Text style={styles?.titleStyle} category="h4">
+        User details
+      </Text>
+      <Spacer line size={10} />
+      <UserDetailsCard userID={post?.userId} />
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  titleStyle: {
+    textAlign: 'center',
+  },
+});
