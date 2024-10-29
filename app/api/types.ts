@@ -118,12 +118,10 @@ export type Post = {
 };
 
 export type PostsDataResponse = {
-  data: {
-    posts: Post[];
-    total: number;
-    skip: number;
-    limit: number;
-  };
+  posts: Post[];
+  total: number;
+  skip: number;
+  limit: number;
 };
 
 export type UserNameResponse = {
