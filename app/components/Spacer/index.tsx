@@ -1,4 +1,3 @@
-import {Size} from '@ui-kitten/components/devsupport';
 import React, {FC} from 'react';
 import {StyleSheet, View, ViewProps} from 'react-native';
 

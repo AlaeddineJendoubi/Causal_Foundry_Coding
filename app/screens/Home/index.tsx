@@ -2,12 +2,10 @@ import React, {FC, useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ButtonIcon} from '../../components/ButtonIcon';
 import {useLogout} from '../../hooks/useLogout';
-import {useFetchConnectedUserData} from '../../hooks/useFetchConnectedUserData';
 import {Text} from '@ui-kitten/components';
 import {Spacer} from '../../components/Spacer';
-
-import PostItem from '../../components/PostItem';
 import {PostsList} from './components/postsList';
+import {useFetchConnectedUserData} from '../../hooks/useFetchConnectedUserData';
 
 export const Home: FC = () => {
   const {isLoading, logout} = useLogout();
