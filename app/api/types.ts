@@ -101,3 +101,27 @@ export type User = {
 export interface GetUserResponse {
   data: User;
 }
+
+type Reaction = {
+  likes: number;
+  dislikes: number;
+};
+
+type Post = {
+  id: number;
+  title: string;
+  body: string;
+  tags: string[];
+  reactions: Reaction;
+  views: number;
+  userId: number;
+};
+
+export type PostsDataResponse = {
+  data: {
+    posts: Post[];
+    total: number;
+    skip: number;
+    limit: number;
+  };
+};
