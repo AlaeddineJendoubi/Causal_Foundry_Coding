@@ -5,6 +5,7 @@ import {Login} from '../screens/Login';
 import {Home} from '../screens/Home';
 import {MainContainer} from '../containers/mainContainer';
 import {LandingScreen} from '../screens/Landing';
+import {Details} from '../screens/Details';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,11 @@ export const AppNavigator = () => {
             options={{headerShown: false}}
             name="Home"
             component={Home}
+          />
+          <Stack.Screen
+            options={{headerShown: false}}
+            name="Details"
+            component={Details}
           />
           <Stack.Screen
             options={{headerShown: false}}
