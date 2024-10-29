@@ -1,19 +1,27 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {SearchInput} from '../../../components/SearchInput';
 import {StyleSheet, View} from 'react-native';
 
-export const PostsSearchField: FC = () => {
-  const [searchText, setSearchText] = useState<string>('');
+interface PostsSearchFieldProps {
+  handleText: (text: string) => void;
+  clearText: () => void;
+  textSearch: string;
+}
 
+export const PostsSearchField: FC<PostsSearchFieldProps> = ({
+  handleText,
+  clearText,
+  textSearch,
+}) => {
   return (
     <View style={styles?.searchContainer}>
       <SearchInput
         placeholder="Search for posts"
-        searchText={searchText}
-        onChangeText={text => setSearchText(text)}
-        clearText={() => setSearchText('')}
-        isEmptyField={searchText?.length <= Number(1)}
-        value={searchText}
+        searchText={textSearch}
+        onChangeText={handleText}
+        clearText={clearText}
+        isEmptyField={textSearch?.length <= Number(1)}
+        value={textSearch}
       />
     </View>
   );
