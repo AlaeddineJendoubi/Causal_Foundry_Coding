@@ -102,12 +102,12 @@ export interface GetUserResponse {
   data: User;
 }
 
-type Reaction = {
+export type Reaction = {
   likes: number;
   dislikes: number;
 };
 
-type Post = {
+export type Post = {
   id: number;
   title: string;
   body: string;
