@@ -3,9 +3,11 @@ import {StyleSheet, View} from 'react-native';
 import {ButtonIcon} from '../../components/ButtonIcon';
 import {useLogout} from '../../hooks/useLogout';
 import {useFetchUserData} from '../../hooks/useFetchUserData';
-import {useFocusEffect} from '@react-navigation/native';
 import {Text} from '@ui-kitten/components';
 import {Spacer} from '../../components/Spacer';
+
+import PostItem from '../../components/PostItem';
+import {PostsList} from './components/postsList';
 
 export const Home: FC = () => {
   const {isLoading, logout} = useLogout();
@@ -22,6 +24,9 @@ export const Home: FC = () => {
         <Text style={styles?.textStyle}>Welcome {userData?.firstName}</Text>
         <Spacer line size={10} />
       </View>
+
+      <PostsList />
+
       <View style={styles.buttonContainer}>
         <ButtonIcon
           isLoading={isLoading}
