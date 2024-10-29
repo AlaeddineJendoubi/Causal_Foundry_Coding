@@ -40,7 +40,5 @@ export const useFetchPosts = (query: string, skip: number) => {
   const postsData =
     query?.length > Number(1) ? searchResults?.data?.posts : postsList;
 
-  console.log('got posts', postsList);
-
   return {fetchPosts: refetch, posts: postsData, isLoading: isFetching};
 };
