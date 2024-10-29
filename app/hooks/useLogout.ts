@@ -4,8 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 
 export const useLogout = () => {
   const {reset} = useNavigation();
-  const {data, refetch, isFetching, error} = useQuery(
-    ['signInUserService'],
+  const {refetch, isFetching} = useQuery(
+    ['logoutUserService'],
     () => AuthService?.signOutUserService,
     {
       enabled: false,
