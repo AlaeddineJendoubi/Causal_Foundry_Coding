@@ -8,14 +8,17 @@ export const useSession = () => {
   const [refreshToken, setRefreshToken] = useState<string | undefined>(
     undefined,
   );
-  const {navigate} = useNavigation();
+  const {navigate, reset} = useNavigation();
 
   const navigateToLogin = () => {
     navigate('Login' as never);
   };
 
   const navigateToHome = () => {
-    navigate('Home' as never);
+    reset({
+      index: 0,
+      routes: [{name: 'Home' as never}],
+    });
   };
 
   const handleGetRefreshToken = async () => {
