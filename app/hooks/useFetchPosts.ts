@@ -10,6 +10,5 @@ export const useFetchPosts = () => {
     },
   );
 
-  console.log('data', data);
-  return {fetchPosts: refetch};
+  return {fetchPosts: refetch, posts: data?.posts, isLoading: isFetching};
 };
