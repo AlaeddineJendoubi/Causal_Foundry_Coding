@@ -6,6 +6,7 @@ import {ImageLoader} from '../ImageLoader';
 import {postImageUriGenerator} from '../../utils/postImageUriGenerator';
 import {Spacer} from '../Spacer';
 import {ActionIcon} from '../ActionIcon';
+import {useFetchUserName} from '../../hooks/useFetchUserName';
 
 interface PostItemProps {
   post: Post;
@@ -13,9 +14,11 @@ interface PostItemProps {
 
 const PostItem: FC<PostItemProps> = ({post}) => {
   const postImageUri = postImageUriGenerator(post?.id, 200);
+  const {userName} = useFetchUserName(post?.userId);
 
   return (
     <View style={styles.containerStyle}>
+      <Text category="h6">{userName}</Text>
       <Text category="s1">{post.title}</Text>
       <Text category="s2">{post.body}</Text>
       <ImageLoader size={200} uri={postImageUri} />
@@ -59,7 +62,7 @@ const PostItem: FC<PostItemProps> = ({post}) => {
 
 const styles = StyleSheet.create({
   containerStyle: {
-    padding: 16,
+    padding: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
