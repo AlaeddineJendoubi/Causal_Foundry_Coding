@@ -1,5 +1,6 @@
 import {BASE_MOCK_API_URL, httpClient} from '../client';
 import {
+  GetUserResponse,
   RefreshTokenRequestType,
   RefreshTokenResponseType,
   SignInDataType,
@@ -18,4 +19,7 @@ export default {
       `${BASE_MOCK_API_URL}/auth/refresh`,
       JSON.stringify(data),
     ),
+
+  fetchUserData: () =>
+    httpClient.get<null, GetUserResponse>(`${BASE_MOCK_API_URL}/auth/me`),
 };
