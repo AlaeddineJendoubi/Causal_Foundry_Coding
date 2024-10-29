@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Post} from '../../api/types';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from '@ui-kitten/components';
 import {ImageLoader} from '../ImageLoader';
 import {postImageUriGenerator} from '../../utils/postImageUriGenerator';
@@ -10,14 +10,18 @@ import {useFetchUserName} from '../../hooks/useFetchUserName';
 
 interface PostItemProps {
   post: Post;
+  onPress?: (post: Post) => void;
 }
 
-const PostItem: FC<PostItemProps> = ({post}) => {
+const PostItem: FC<PostItemProps> = ({post, onPress}) => {
   const postImageUri = postImageUriGenerator(post?.id, 200);
   const {userName} = useFetchUserName(post?.userId);
 
   return (
-    <View style={styles.containerStyle}>
+    <TouchableOpacity
+      style={styles.containerStyle}
+      disabled={!onPress}
+      onPress={() => onPress && onPress(post)}>
       <Text category="h6">{userName}</Text>
       <Text category="s1">{post.title}</Text>
       <Text category="s2">{post.body}</Text>
@@ -56,7 +60,7 @@ const PostItem: FC<PostItemProps> = ({post}) => {
         </View>
       </View>
       <Text appearance="hint">Tags: #{post.tags.join(' #')}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
