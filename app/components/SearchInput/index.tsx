@@ -11,12 +11,9 @@ interface SearchInputProps extends InputProps {
 }
 export const SearchInput: FC<SearchInputProps> = ({
   clearText,
-  searchText,
   isEmptyField,
   ...rest
 }) => {
-  console.log(searchText?.length);
-
   const searchAccessory = () => (
     <ActionIcon
       name={isEmptyField ? 'search-outline' : 'close-outline'}
