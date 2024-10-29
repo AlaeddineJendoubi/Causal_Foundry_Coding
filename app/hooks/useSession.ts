@@ -46,7 +46,6 @@ export const useSession = () => {
   }, []);
 
   useEffect(() => {
-    console.log('token', refreshToken);
     if (!!refreshToken) {
       refetch();
     }

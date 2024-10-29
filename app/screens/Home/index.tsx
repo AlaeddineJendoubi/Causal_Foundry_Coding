@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {ButtonIcon} from '../../components/ButtonIcon';
 import {useLogout} from '../../hooks/useLogout';
@@ -6,8 +6,10 @@ import {Text} from '@ui-kitten/components';
 import {Spacer} from '../../components/Spacer';
 import {PostsList} from './components/postsList';
 import {useFetchConnectedUserData} from '../../hooks/useFetchConnectedUserData';
+import {PostsSearchField} from './components/postsSearchField';
 
 export const Home: FC = () => {
+  const [searchText, setSearchText] = useState<string>('');
   const {isLoading, logout} = useLogout();
 
   const {getUserData, userData} = useFetchConnectedUserData();
@@ -22,8 +24,12 @@ export const Home: FC = () => {
         <Text style={styles?.textStyle}>Welcome {userData?.firstName}</Text>
         <Spacer line size={10} />
       </View>
-
-      <PostsList />
+      <PostsSearchField
+        textSearch={searchText}
+        handleText={t => setSearchText(t)}
+        clearText={() => setSearchText('')}
+      />
+      <PostsList searchQuery={searchText} />
 
       <View style={styles.buttonContainer}>
         <ButtonIcon
