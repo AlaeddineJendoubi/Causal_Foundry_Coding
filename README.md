@@ -1,8 +1,12 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+## Download the APK
+
+You can download the latest version of the app [here](https://github.com/AlaeddineJendoubi/Casual_Foundry_Coding/releases/download/v1/app-release.apk).
+
+> **Note**: Ensure that installation from unknown sources is enabled on your Android device.
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions until the "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -13,9 +17,9 @@ To start Metro, run the following command from the _root_ of your React Native p
 ```bash
 # using npm
 npm start
+# or if having issues installing
+npm install --legacy-peer-deps --verbose
 
-# OR using Yarn
-yarn start
 ```
 
 ## Step 2: Start your Application
@@ -28,8 +32,6 @@ Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _roo
 # using npm
 npm run android
 
-# OR using Yarn
-yarn android
 ```
 
 ### For iOS
@@ -42,38 +44,138 @@ npm run ios
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Here's how you could update your README to include a brief note about using Reactotron for debugging:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+---
 
-## Step 3: Modifying your App
+## Step 3: Debugging
 
-Now that you have successfully run the app, let's modify it.
+To debug the application, you can use **Reactotron**, a tool that helps track logs, monitor app state, and inspect API requests in real time. Reactotron is already configured in the project. To use it:
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+1.  **Ensure Reactotron is running** on your computer.
+2.  Launch the app, and you should see logs and other debugging information in Reactotron.
+3.  If you are using an android device run the following command and restart the app
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+```bash
+adb reverse tcp:9090 tcp:9090
+```
 
-## Congratulations! :tada:
+For more details on Reactotron, refer to the [Reactotron documentation](https://github.com/infinitered/reactotron).
 
-You've successfully run and modified your React Native App. :partying_face:
+---
 
-### Now what?
+This gives a concise mention of Reactotron, with a link for further information if needed. Let me know if you'd like to expand it!
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+## Project File Structure
 
-# Troubleshooting
+The project is organized as follows:
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```
+/app
+├── /api                        # API-related modules
+│   ├── /auth
+│   │   └── index.ts            # Handles authentication-related API requests
+│   ├── /logging
+│   │   └── index.ts            # Manages logging functionality
+│   ├── /posts
+│   │   └── index.ts            # Contains API functions related to posts
+│   └── /users
+│       ├── index.ts            # Entry point for user-related API requests
+│       ├── client.ts           # Client-specific API interactions
+│       └── types.ts            # TypeScript types for user data structures
+│
+├── /components                 # Reusable UI components
+│   ├── /ActionIcon             # Component for rendering action icons
+│   ├── /ButtonIcon             # Button component with an icon
+│   ├── /ImageLoader            # Component responsible for loading images
+│   ├── /InputField             # Reusable input field component
+│   ├── /PostItem               # Represents a single post item component
+│   ├── /SearchInput            # Search input functionality component
+│   ├── /SectionList            # Renders a list of sections
+│   └── /Spacer                 # Provides spacing between elements
+│
+├── /containers                 # Container components for layout
+│   └── mainContainer.tsx       # Main container layout
+│
+├── /hooks                      # Custom hooks
+│   ├── useAppActivity.tsx      # Manages app activity states
+│   ├── useAuthUser.ts          # Authentication user hook
+│   ├── useFetchConnectedUserData.ts # Fetches connected user data
+│   ├── useFetchPosts.ts        # Fetches posts
+│   ├── useFetchUserById.ts     # Fetches user by ID
+│   ├── useFetchUserName.ts     # Fetches username by ID
+│   ├── useLogout.ts            # Handles user logout
+│   └── useSession.ts           # Manages session information
+│
+├── /navigation                 # Navigation setup
+│   └── AppNavigator.tsx        # Main app navigator
+│
+├── /screens                    # Screens for different app views
+│   ├── /Details                # Details screen
+│   ├── /Home                   # Home screen
+│   ├── /Landing                # Landing screen
+│   └── /Login                  # Login screen
+│
+├── /services                   # Contains service modules that encapsulate business logic and API interactions
+│   ├── /auth                   # Authentication services
+│   ├── /posts                  # Services related to handling posts
+│   ├── /storage                # Stored Data services
+│   ├── /tracking               # Handles tracking-related services
+│   └── /users                  # User-related services
+│
+└── /utils                      # Utility functions
 
-# Learn More
 
-To learn more about React Native, take a look at the following resources:
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Features
+
+- **User Authentication**: Secure login system with session management.
+- **Token Refresh**: Automatic handling of token expiration and refresh.
+- **API Integration**: Fetches data from APIs for lists and detailed views.
+- **User Action Tracking**: Monitors user interactions within the app.
+- **Async Data Management**: Utilizes React Query for efficient data fetching and caching.
+- **Responsive Design**: Built with the UI Kitten library for a responsive and intuitive UI.
+
+## Technologies Used
+
+- **React Native**: For building cross-platform mobile applications.
+- **UI Kitten**: A React Native UI library based on Eva Design System.
+- **Axios**: For making HTTP requests to APIs.
+- **React Query**: For managing asynchronous data fetching and state.
+- **React Navigation**: For managing navigation within the app.
+
+## API Endpoints
+
+- **Login**: `POST /api/login`
+- **Fetch List**: `GET /api/items`
+- **Fetch Item Details**: `GET /api/items/:id`
+
+## User Action Tracking
+
+The application tracks user actions, such as:
+
+- Successful logins
+- API requests made
+- Navigation events
+
+This data can be used to enhance user experience and monitor app usage.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- [React Native](https://reactnative.dev/)
+- [UI Kitten](https://akveo.com/ui-kitten)
+- [Axios](https://axios-http.com/)
+- [React Query](https://react-query.tanstack.com/)
+
+---
+
+Let me know if you need any further changes or additional information!
