@@ -14,14 +14,8 @@ export const Login: FC = () => {
     handleUserPassword,
     handleLogin,
     isLoading,
+    error,
   } = useHandleForm();
-
-  const dummyData = {username: 'michaelw', password: 'michaelwpass'};
-
-  useEffect(() => {
-    handleUserName(dummyData?.username);
-    handleUserPassword(dummyData?.password);
-  });
 
   useEffect(() => {
     tracking?.setNewAction('login_screen');
@@ -38,7 +32,6 @@ export const Login: FC = () => {
 
       <View style={styles?.formContainer}>
         <InputField
-          value={dummyData?.username}
           onChangeText={handleUserName}
           hasIcon
           iconName="person-outline"
@@ -46,12 +39,18 @@ export const Login: FC = () => {
         />
         <Spacer size={10} />
         <InputField
-          value={dummyData?.password}
           onChangeText={handleUserPassword}
           hasIcon
           isSecure
           placeholder="Password"
         />
+        <Spacer size={10} />
+
+        {error && !isLoading && (
+          <Text style={styles.errorStyle} category="label">
+            {error}
+          </Text>
+        )}
         <Spacer line size={20} />
 
         <ButtonIcon
@@ -84,5 +83,8 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     marginHorizontal: '30%',
+  },
+  errorStyle: {
+    textAlign: 'center',
   },
 });

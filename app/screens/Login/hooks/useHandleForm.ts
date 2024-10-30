@@ -1,16 +1,15 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useAuthUser} from '../../../hooks/useAuthUser';
-import {useNavigation} from '@react-navigation/native';
-import tracking from '../../../services/tracking';
 
 export const useHandleForm = () => {
   const [userName, setUserName] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
-  const {reset} = useNavigation();
-  const {refetch, error, isFetching} = useAuthUser({
+  const {login, error, isFetching} = useAuthUser({
     username: userName,
     password: userPassword,
   });
+  const [errorMsg, setErrorMsg] = useState<string | undefined>(undefined);
+
   const isFormValid = userName?.length > 0 && userPassword?.length > 0;
 
   const handleUserName = (inputUserName: string) => {
@@ -24,21 +23,23 @@ export const useHandleForm = () => {
   const handleLogin = async () => {
     if (isFormValid) {
       try {
-        await refetch();
-        tracking?.setNewAction('login');
-        reset({
-          index: 0,
-          routes: [{name: 'Home' as never}], // Navigate to Home screen and reset the stack
-        });
+        await login();
       } catch (e) {
         console.log('err', e);
       }
     }
   };
 
+  useEffect(() => {
+    setErrorMsg(null);
+  }, [userName, userPassword]);
+
+  useEffect(() => {
+    setErrorMsg(error?.message);
+  }, [error?.message]);
   return {
     isLoading: isFetching,
-    error,
+    error: errorMsg,
     handleLogin,
     isFormValid,
     userName,

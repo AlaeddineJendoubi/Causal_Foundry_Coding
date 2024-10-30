@@ -38,7 +38,7 @@ export type User = {
   phone: string;
   username: string;
   password: string;
-  birthDate: string; // Consider using Date type for actual date handling
+  birthDate: string;
   image: string;
   bloodGroup: string;
   height: number;
@@ -127,4 +127,9 @@ export type PostsDataResponse = {
 export type UserNameResponse = {
   firstName: string;
   lastName: string;
+};
+
+export type ErrorType = {
+  status: string;
+  message: string;
 };
