@@ -47,7 +47,7 @@ export const Login: FC = () => {
         <Spacer size={10} />
 
         {error && !isLoading && (
-          <Text style={styles.errorStyle} category="label">
+          <Text style={styles.errorStyle} category="label" status="danger">
             {error}
           </Text>
         )}
@@ -55,7 +55,7 @@ export const Login: FC = () => {
 
         <ButtonIcon
           iconColor="white"
-          text="Sign in "
+          text="Sign in"
           iconName="log-in-outline"
           style={styles?.buttonStyle}
           disabled={!isFormValid}

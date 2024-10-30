@@ -21,11 +21,11 @@ export const UserDetailsCard: FC<UserDetailsCardProps> = ({userID}) => {
         left="Full Name"
         right={`${userData?.firstName} ${userData?.lastName}`}
       />
-      <SectionList left="email" right={userData?.email} />
-      <SectionList left="phone" right={userData?.phone} />
-      <SectionList left="username" right={userData?.username} />
-      <SectionList left="gender" right={userData?.gender} />
-      <SectionList left="dob" right={userData?.birthDate} />
+      <SectionList left="Email" right={userData?.email} />
+      <SectionList left="Phone" right={userData?.phone} />
+      <SectionList left="Username" right={userData?.username} />
+      <SectionList left="Gender" right={userData?.gender} />
+      <SectionList left="Date of birth" right={userData?.birthDate} />
     </View>
   );
 };
