@@ -7,7 +7,7 @@ import {Spacer} from '../../components/Spacer';
 import {PostsList} from './components/postsList';
 import {useFetchConnectedUserData} from '../../hooks/useFetchConnectedUserData';
 import {PostsSearchField} from './components/postsSearchField';
-import {setNewAction, setUserName} from '../../services/tracking';
+import tracking from '../../services/tracking';
 
 export const Home: FC = () => {
   const [searchText, setSearchText] = useState<string>('');
@@ -17,8 +17,8 @@ export const Home: FC = () => {
 
   useEffect(() => {
     !userData && getUserData();
-    setUserName(userData?.firstName);
-    setNewAction('post-detail-screen');
+    tracking?.setUserName(userData?.firstName);
+    tracking?.setNewAction('post-detail-screen');
   }, []);
   return (
     <View style={styles.container}>

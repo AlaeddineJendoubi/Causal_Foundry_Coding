@@ -12,7 +12,7 @@ import {AppNavigator} from './app/navigation/AppNavigator';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {useAppActivity} from './app/containers/appActivity';
+import {useAppActivity} from './app/hooks/useAppActivity';
 
 export const queryClient = new QueryClient({
   defaultOptions: {

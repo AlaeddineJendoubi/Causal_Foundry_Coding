@@ -1,21 +1,35 @@
-import {Action, ActionType} from '../../api/types';
+import logging from '../../api/logging';
+import {Action, ActionType, LogType} from './types';
 
-let actionsList: Action[] = [];
+class TrackActionsService {
+  actionsList: Action[] = [];
 
-let username: string = '';
+  username: string = '';
 
-let userLogs = {username, data: actionsList};
+  getActions = () => this?.actionsList;
 
-export const getActions = () => actionsList;
+  setUserName = (userName: string) => {
+    console.log('setting user name', userName);
+    this.username = userName;
+  };
 
-export const setUserName = (userName: string) => {
-  username = userName;
-};
+  setNewAction = (action: ActionType) => {
+    console.log('setting new action ', action);
+    const prevAction = this.actionsList;
+    const currentDate = new Date().toString();
+    this.actionsList = [...prevAction, {action, ts: currentDate}];
+  };
 
-export const setNewAction = (action: ActionType) => {
-  const prevAction = actionsList;
-  const currentDate = new Date().toString();
-  actionsList = [...prevAction, {action, ts: currentDate}];
-};
+  getUserLogs = () =>
+    ({username: this.username, data: this.actionsList} as LogType);
 
-export const getUserLogs = () => ({username, data: actionsList});
+  uploadLogs = async (logs: LogType) => {
+    try {
+      await logging.uploadLogsRequest(logs);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+}
+
+export default new TrackActionsService();

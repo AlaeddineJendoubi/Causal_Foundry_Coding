@@ -5,7 +5,7 @@ import {InputField} from '../../components/InputField';
 import {Spacer} from '../../components/Spacer';
 import {useHandleForm} from './hooks/useHandleForm';
 import {ButtonIcon} from '../../components/ButtonIcon';
-import {setNewAction} from '../../services/tracking';
+import tracking from '../../services/tracking';
 
 export const Login: FC = () => {
   const {
@@ -24,7 +24,7 @@ export const Login: FC = () => {
   });
 
   useEffect(() => {
-    setNewAction('login_screen');
+    tracking?.setNewAction('login_screen');
   }, []);
   return (
     <View style={styles?.mainContainerStyle}>

@@ -6,12 +6,12 @@ import {ScrollView, StyleSheet} from 'react-native';
 
 import {UserDetailsCard} from './components/userDetailsCard';
 import {Post} from '../../api/types';
-import {setNewAction} from '../../services/tracking';
+import tracking from '../../services/tracking';
 
 export const Details: FC = ({route}) => {
   const post = route?.params?.post as Post;
   useEffect(() => {
-    setNewAction('post-detail-screen');
+    tracking?.setNewAction('post-detail-screen');
   }, []);
   return (
     <ScrollView>

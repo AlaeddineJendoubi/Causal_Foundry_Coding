@@ -4,7 +4,7 @@ import {useFetchPosts} from '../../../hooks/useFetchPosts';
 import PostItem from '../../../components/PostItem';
 import {useNavigation} from '@react-navigation/native';
 import {Post} from '../../../api/types';
-import {setNewAction} from '../../../services/tracking';
+import tracking from '../../../services/tracking';
 
 interface PostsListProps {
   searchQuery: string;
@@ -19,7 +19,7 @@ export const PostsList: FC<PostsListProps> = ({searchQuery}) => {
   }, []);
 
   const handleOnPress = (post: Post) => {
-    setNewAction('post-click');
+    tracking?.setNewAction('post-click');
 
     navigate('Details', {post});
   };
