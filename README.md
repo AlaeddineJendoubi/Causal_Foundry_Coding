@@ -133,6 +133,7 @@ The project is organized as follows:
 - **User Authentication**: Secure login system with session management.
 - **Token Refresh**: Automatic handling of token expiration and refresh.
 - **API Integration**: Fetches data from APIs for lists and detailed views.
+- **API Based search**: Performs API requests and fetches a posts list based on user search input. 
 - **User Action Tracking**: Monitors user interactions within the app.
 - **Async Data Management**: Utilizes React Query for efficient data fetching and caching.
 - **Responsive Design**: Built with the UI Kitten library for a responsive and intuitive UI.
@@ -165,9 +166,21 @@ This data can be used to enhance user experience and monitor app usage.
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue.
 
-## License
+## Screenshots
 
-This project is licensed under the MIT License.
+Here are some screenshots of the app:
+
+### Login Screen
+![Login Screen] ![Screenshot_1730257063](https://github.com/user-attachments/assets/01483632-5071-404c-ac5a-698005a77667)
+![Screenshot_1730256891](https://github.com/user-attachments/assets/cf293724-8c73-4190-8dc6-1a8bb298614c)
+
+
+### Home Screen
+![Home Screen] ![Screenshot_1730256986](https://github.com/user-attachments/assets/b0200891-034e-4c7e-9c13-60b43e1b59f5)
+
+
+### Details Screen
+![Details Screen] ![Screenshot_1730256992](https://github.com/user-attachments/assets/6b6295be-cf5d-466e-8d7c-b369e8e7f7eb)
 
 ## Acknowledgments
 
